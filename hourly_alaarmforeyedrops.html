@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hourly Alarm</title>
+</head>
+<body>
+
+<script>
+function setHourlyAlarm() {
+    var now = new Date();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+    
+    // Calculate milliseconds remaining until the next hour
+    var millisecondsUntilNextHour = (60 - minutes) * 60 * 1000 - seconds * 1000;
+    
+    // Set timeout to ring the alarm after the remaining milliseconds
+    setTimeout(function() {
+        alert("It's been an hour!");
+        // Reset the alarm for the next hour
+        setHourlyAlarm();
+    }, millisecondsUntilNextHour);
+}
+
+// Call the function to start the hourly alarm
+setHourlyAlarm();
+</script>
+
+</body>
+</html>
